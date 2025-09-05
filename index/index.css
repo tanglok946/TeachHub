@@ -1,0 +1,1013 @@
+/*Font Type */
+@font-face {
+  font-family: Cyberpunk;
+  src: url("../Lunar Escape.otf");
+}
+
+/* Neon Pulse Animation */
+@keyframes blueneon-pulse {
+  0%,
+  100% {
+    text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff, 0 0 30px #ff00ff;
+  }
+  50% {
+    text-shadow: 0 0 20px #00ccff, 0 0 40px #00ccff, 0 0 60px #ff00ff;
+  }
+}
+
+@keyframes yellowneon-pulse {
+  0%,
+  100% {
+    text-shadow: 0 0 10px #ffed29, 0 0 20px #ffed29, 0 0 30px #ffcc00;
+  }
+  50% {
+    text-shadow: 0 0 20px #ffed29, 0 0 40px #ffed29, 0 0 60px #ffcc00;
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0); /* Start and end at the original position */
+  }
+  25% {
+    transform: translateY(-5px); /* Move the text up by 5px */
+  }
+  50% {
+    transform: translateY(0); /* Return to the original position */
+  }
+  75% {
+    transform: translateY(-1px); /* Move the text up by 1px */
+  }
+}
+:where([class^="ri-"])::before {
+  content: "\f3c2";
+}
+:root {
+  --background-color: #0a0a0a;
+  --text-color: #ffffff;
+  --button-bg-color: #ff00ff;
+  --button-text-color: #0a0a0a;
+  --feature-bg-color: #1a1a1a;
+  --feature-header-color: #ffffff; /* beware */
+  --feature-card-color: #2a2a2a;
+  --card-text-color: #ccc;
+  --about--bg-color: #0a0a0a;
+  --about--header-color: #ffffff;
+  --footer--bg-color: #1a1a1a;
+  --footer--header--color: #ffffff;
+  --footer--text--color: #ccc;
+}
+
+[data-theme="light"] {
+  --background-color: #ffffff;
+  --text-color: #0a0a0a;
+  --button-bg-color: #0077cc;
+  --button-text-color: #ffffff;
+  --feature-bg-color: #ccc;
+  --feature-header-color: #1a1a1a; /* beware */
+  --feature-card-color: #ffffff;
+  --card-text-color: #1a1a1a;
+  --about--bg-color: #ffffff;
+  --about--header-color: #1a1a1a; /* beware */
+  --footer--bg-color: #ccc;
+  --footer--header--color: #1a1a1a;
+  --footer--text--color: #1a1a1a;
+}
+
+.bounce-once {
+  animation: bounce 0.5s ease 1; /* Apply the bounce animation once */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Cyberpunk", sans-serif;
+  margin: 0;
+  padding: 0;
+  background: var(--background-color);
+  color: var(--text-color);
+  overflow-x: hidden;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: rgba(10, 10, 10, 0.9);
+  padding: 10px;
+  z-index: 1000;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #00ccff;
+  text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff;
+  animation: blueneon-pulse 2s infinite;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  transform: translateX(-35px);
+}
+
+.nav-links a {
+  color: #00ccff;
+  text-decoration: none;
+  font-size: 18px;
+  display: inline-block;
+}
+
+.nav-links a:hover {
+  color: #ff00ff;
+  text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+}
+
+.dropdown-menu {
+  position: absolute;
+  display: none; /* Hidden by default */
+  background-color: rgba(10, 10, 10, 0.7); /* bg-gray-800 */
+  padding: 1rem; /* p-4 */
+  border-radius: 0.5rem; /* rounded-lg */
+  top: 100%; /* Position below the "Menu" link */
+  left: 0;
+  min-width: 150px; /* Adjust as needed */
+  z-index: 10; /* Ensure dropdown is above other content */
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+}
+
+/* Show dropdown on hover */
+.group:hover .dropdown-menu {
+  display: block;
+  opacity: 1;
+}
+
+/* Dropdown Links */
+.dropdown-menu a {
+  display: block;
+  padding: 0.5rem 0;
+  color: #00ccff; /* text-gray-400 */
+  transition: color 300ms;
+}
+
+.dropdown-menu.active {
+  display: block;
+}
+
+/* Theme Toggle Switch */
+.theme-toggle {
+  transition: transform 0.5s ease-in-out;
+}
+.theme-toggle.rotate {
+  transform: rotate(360deg);
+}
+
+/* Add these styles for the theme toggle button */
+.theme-toggle {
+  position: relative;
+  overflow: hidden;
+  background-color: transparent;
+  transition: background-color 0.3s ease, transform 0.5s ease;
+  width: 22px;
+  height: 23px;
+}
+
+.theme-toggle:hover {
+  opacity: 0.1;
+}
+
+.theme-toggle i {
+  transition: transform 0.5s ease, opacity 0.3s ease;
+}
+
+.theme-toggle .ri-sun-line {
+  color: #fbbf24; /* Yellow color for the sun icon */
+}
+
+.theme-toggle .ri-moon-line {
+  color: white;
+}
+
+/* Hero Section */
+.hero {
+  height: 100vh;
+  background: url("images/4910984.gif") no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #ffffff; /* White text for better readability */
+}
+
+#welcomeHeader{
+  margin-bottom: 15px;
+}
+
+.hero-content h1 {
+  font-size: 100px;
+  text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff, 0 0 30px #ff00ff;
+  margin-top: -60px;
+  margin-bottom: -20px;
+  animation: blueneon-pulse 2s infinite;
+}
+
+.hero-content p {
+  font-size: 30px;
+  margin: 20px 0;
+  text-shadow: 0 0 10px #ff7300, 0 0 20px #ff7300;
+}
+
+/* Search Bar Styles */
+.search-bar {
+  display: flex; /* Use flexbox for layout */
+  justify-content: center; /* Center the search bar horizontally */
+  align-items: center; /* Center the search bar vertically */
+  margin: 20px 0; /* Add space above and below the search bar */
+}
+
+/* Style the search input field */
+.search-input {
+  padding: 10px 20px; /* Add padding inside the input field */
+  font-size: 16px; /* Set font size to 16px */
+  border: 2px solid #00ccff; /* Add a light blue border */
+  border-radius: 5px; /* Round the corners of the input field */
+  background: rgba(10, 10, 10, 0.8); /* Set a semi-transparent dark background */
+  color: #ffffff; /* Set text color to light blue */
+  text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff; /* Glow effect for text */
+  outline: none; /* Remove the default outline */
+  width: 300px; /* Set a fixed width for the input field */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Add smooth transitions */
+}
+
+/* Placeholder styling for the search input */
+.search-input::placeholder {
+  color: #ffffff; /* Light blue placeholder text */
+  text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff; /* Glow effect for text */
+  opacity: 0.7; /* Slightly transparent */
+}
+
+/* Styling for the search input when it is focused */
+.search-input:focus {
+  border-color: #ff00ff; /* Pink border color */
+  box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff; /* Pink glow effect */
+}
+
+/* Styling for the search button */
+.search-button {
+  padding: 10px 20px; /* Padding inside the button */
+  font-size: 16px; /* Font size */
+  background: #ff00ff; /* Pink background */
+  color: #0a0a0a; /* Black text color */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  margin-left: 10px; /* Space between input and button */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+}
+
+/* Hover effect for the search button */
+.search-button:hover {
+  background: #00ccff; /* Light blue background on hover */
+  box-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff, 0 0 30px #ff00ff; /* Glow effect on hover */
+}
+
+/* Styling for highlighted text matches */
+.highlight {
+  background-color: yellow; /* Pink background for matches */
+  color: #0a0a0a; /* Black text for better contrast */
+  padding: 2px 4px; /* Padding around the text */
+  border-radius: 3px; /* Slightly rounded corners */
+}
+
+.cta-button {
+  padding: 10px 20px;
+  background: #ff00ff; /* Hot pink button */
+  color: #0a0a0a; /* Dark text */
+  text-decoration: none;
+  font-size: 18px;
+  border-radius: 5px;
+  transition: box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.cta-button:hover {
+  background: #00ccff; /* Electric blue on hover */
+  box-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff, 0 0 30px #ff00ff;
+}
+
+/* Inspiration Section Styles */
+.inspiration-section {
+  padding: 90px 20px;
+  background:var(--about--bg-color);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.inspiration-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.image-container {
+  flex: 1;
+  max-width: 300px;
+}
+
+.steve-jobs-image {
+  width: 100%;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.steve-jobs-image:hover {
+  transform: scale(1.05);
+  
+}
+
+.quote-container {
+  flex: 2;
+  text-align: left;
+}
+
+.quote-text {
+  font-size: 2.5rem;
+  color: var(--text-color);
+  text-shadow: 0 0 10px #ccc, 0 0 20px #ccc;
+  margin-bottom: 20px;
+  line-height: 1.4;
+
+}
+
+/* Typing Animation Styles */
+#typing-text {
+  overflow: hidden;
+  white-space: pre-wrap;
+  margin:0 auto  20px;
+  letter-spacing: 1px;
+  animation: blink-caret 0.75s step-end infinite;
+}
+
+
+.quote-author {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  text-shadow: 0 0 10px #ccc, 0 0 20px #ccc;
+}
+
+/* Author Container Styles */
+.author-container {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between text and icon */
+  margin-top: 10px;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .inspiration-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .quote-text {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .quote-author {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+}
+
+/* Features Section */
+.features {
+  padding: 100px 20px;
+  background: var(--feature-bg-color);
+  text-align: center;
+  transform: scale(0.8);
+  transition: transform 1s ease-out, opacity 1s ease-out;
+  opacity: 0;
+}
+
+.features h2 {
+  font-size: 36px;
+  margin-bottom: 40px;
+  color: var(--feature-header-color);
+  text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff, 0 0 30px #ff00ff;
+}
+
+.features.zoom-in {
+  transform: scale(1); /* Zoom out to 80% */
+  opacity: 1; /* Fade out */
+}
+
+.features.zoom-out {
+  transform: scale(0.8); /* Zoom out to 80% */
+  opacity: 0; /* Fade out */
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.feature-card {
+  background: var(--feature-card-color);
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #00ccff; /* Electric blue border */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  border-color: #ff00ff; /* Hot pink border on hover */
+  box-shadow: 0 0 20px #00ccff, 0 0 40px #ff00ff;
+}
+
+.feature-card h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+}
+
+.feature-image {
+  width: 100%; /* Make image responsive */
+  height: 200px; /* Set a fixed height */
+  object-fit: cover; /* Ensure the image covers the area */
+  border-radius: 10px; /* Match card border radius */
+  margin-bottom: 15px; /* Space between image and text */
+  border: 2px solid var(--neon-primary); /* Add a neon border */
+  box-shadow: 0 0 10px var(--neon-primary); /* Add a subtle glow */
+}
+
+.feature-card p {
+  font-size: 16px;
+  color: var(--card-text-color);
+  margin-bottom: 20px; /* Space between text and button */
+}
+
+.feature-button {
+  padding: 10px 20px;
+  background: #ff00ff; /* Hot pink button */
+  color: #0a0a0a; /* Dark text */
+  text-decoration: none;
+  font-size: 18px;
+  border-radius: 5px;
+  text-align:center; /* Space above the button */
+  transition: box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.feature-button:hover {
+  background: #00ccff; /* Electric blue on hover */
+  box-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff, 0 0 30px #ff00ff;
+}
+/* About Section */
+.about {
+  width: 80%;
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: var(--about--bg-color); /* Dark background */
+}
+
+.about-us {
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Vertically center items */
+  gap: 2rem; /* Space between video and text */
+}
+
+/* Video Container */
+.video-container {
+  flex: 1.0; 
+}
+
+.video-container video {
+  width: 100%; /* Make video responsive */
+  border-radius: 10px; /* Optional: Add border radius */
+}
+
+/* Intro Text */
+.intro {
+  flex: 1; /* Take up 50% of the space */
+  color: var(--text-color); /* White text */
+}
+
+.intro h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+  text-shadow: 0 0 10px #ff7300, 0 0 20px #ff7300;
+}
+
+.intro p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.intro h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+  text-shadow: 0 0 10px #ffed29, 0 0 20px #ffed29;
+}
+
+.intro ul {
+  list-style-type: none; /* Remove default bullets */
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+.intro ul li {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.intro ul li::before {
+  content: "•"; /* Custom bullet */
+  color: #00ccff; /* Neon bullet */
+  font-size: 1.5rem;
+  position: absolute;
+  left: 0;
+  top: -0.25rem;
+}
+
+@media (max-width: 768px) {
+  .about-us {
+    flex-direction: column; /* Stack video and text vertically on mobile */
+  }
+
+  .video-container,
+  .intro {
+    flex: none; /* Reset flex for mobile */
+    width: 100%; /* Full width on mobile */
+    max-width: 100%; /* Remove max-width on mobile */
+  }
+
+  .intro h2 {
+    font-size: 1.75rem; /* Reduce font size for mobile */
+  }
+
+  .intro p,
+  .intro ul li {
+    font-size: 0.9rem; /* Reduce font size for mobile */
+  }
+}
+
+.cookie-popup {
+  position: fixed;
+  bottom: 20px; /* Position at the bottom */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Adjust for exact centering */
+  background-color: #1a1a1a;
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  max-width: 90%; /* Ensure it doesn't overflow on small screens */
+  width: 300px; /* Fixed width for better readability */
+  text-align: center; /* Center-align text */
+  display: none; /* Hidden by default */
+  opacity: 0;
+  transform: translate(-50%, 20px); /* Initial position for animation */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  z-index: 1000;
+}
+
+.cookie-popup.show {
+  opacity: 1;
+  transform: translate(-50%, 0); /* Final position for animation */
+}
+
+.cookie-popup p {
+  margin: 0 0 15px 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.accept-cookies {
+  background-color: #00ccff;
+  color: #0a0a0a;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.accept-cookies:hover {
+  background-color: #ff00ff;
+}
+
+.decline-cookies {
+  background-color: #ff4444;
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: 10px; /* Spacing between buttons */
+  transition: background-color 0.3s ease;
+}
+
+.decline-cookies:hover {
+  background-color: #cc0000;
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  background: var(--footer--bg-color);
+  text-align: center;
+  color: var(--footer--text--color);
+  font-size: 14px;
+}
+
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem; /* px-6 */
+  padding-right: 1.5rem; /* px-6 */
+  display: grid; /* grid */
+  grid-template-columns: repeat(3, 1fr); /* grid-cols-1 */
+  gap: 2rem; /* gap-8 */
+}
+
+.quickSection a:hover {
+  color: #ff00ff;
+}
+
+.aboutSection h3 {
+  color: var(--footer--header--color);
+  text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff, 0 0 30px #ff00ff;
+}
+
+.quickSection h3 {
+  color: var(--footer--header--color);
+  text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff, 0 0 30px #ff00ff;
+}
+
+.contactSection h3 {
+  color: var(--footer--header--color);
+  text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff, 0 0 30px #ff00ff;
+}
+
+.insta,
+.facebbok,
+.twitter,
+.youtube {
+  color: var(--footer--text--color);
+  transition: color 300ms ease-in-out;
+}
+
+.insta:hover {
+  color: #ff00ff;
+  transform: scale(1.1);
+}
+
+.facebook:hover {
+  color: #1877f2;
+  transform: scale(1.1);
+}
+
+.twitter:hover {
+  color: #1da1f2;
+  transform: scale(1.1);
+}
+
+.youtube:hover {
+  color: #cd201f;
+  transform: scale(1.1);
+}
+
+.footerBottom {
+  border-top: 1px solid #374151; /* border-t border-gray-800 */
+  margin-top: 1.5rem; /* mt-6 */
+  padding-top: 1.5rem; /* pt-6 */
+  text-align: center; /* text-center */
+  color: var(--footer--header--color);
+  text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff, 0 0 30px #ff00ff;
+}
+
+@media (max-width: 768px) {
+  .logo {
+    font-size: 1.2rem;
+    margin-left: 5px; /* Move the logo to the left */
+  }
+
+  .nav-links {
+    gap: 0px; /* Reduce gap between links */
+    
+  }
+
+  .nav-links a {
+    font-size: 0.9rem; /* Slightly smaller text for mobile */
+    padding: 5px 10px; /* Smaller tap targets */
+    margin-left: -13px;
+  }
+
+  .theme-toggle{
+    width: 22px;
+    height: 23px;
+    margin-top:3.5px;
+    margin-right:-29px;
+    margin-left:5px;
+  }
+
+
+  .hero-content p {
+    font-size: 1.2rem;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-card {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  #welcomeHeader{
+    margin-bottom:40px;
+    font-size:3.5rem;
+  }
+
+  .hero-content h1 {
+    font-size: 3.5rem;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  /* md: */
+  .container {
+    grid-template-columns: 1fr; 
+    gap: 1rem; /* Reduce gap for mobile */
+  }
+
+  .footer {
+    padding: 15px; /* Reduce padding for mobile */
+    font-size: 12px; /* Smaller font size for mobile */
+  }
+}
+
+.bounce-once {
+  animation: bounce 0.5s ease 1;
+}
+
+/* Tech News Section */
+.technews {
+  width: 100%;
+  max-width: 1800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: var(--background-color); /* Dark background */
+}
+
+.technews h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  color:var(--text-color);
+  text-shadow: 0 0 10px #00ccff, 0 0 20px #ff00ff; /* Glow effect */
+}
+
+/* Carousel Container */
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  width:100%;
+}
+
+/* Carousel Track */
+.carousel-track {
+  display: flex;
+  gap: 1rem; /* Space between items */
+  transition: transform 0.5s ease-in-out;
+}
+
+/* Carousel Item */
+.carousel-item {
+  flex:0 0 calc(100% / 3); /* 3 items per row */
+  padding: 2rem;
+  box-sizing: border-box;
+  text-align: center;
+  background: var(--feature-card-color); /* Dark background */
+  border-right: 1px solid #00ccff; /* Neon border */
+  border-radius: 10px;
+  width:100%;
+}
+
+.carousel-image {
+  width: 100%; /* Make image responsive */
+  max-width: 200px; /* Limit image size */
+  height: auto; /* Maintain aspect ratio */
+  margin-bottom: 1.5rem; /* Space between image and text */
+  border-radius: 10px; /* Optional: Add border radius */
+}
+
+.carousel-item p {
+  margin-top:1rem;
+  font-size: 1.1rem;
+  color: var(--about--header-color); /* Light gray text */
+  text-shadow:0 0 10px #ff6ec7, 0 0 20px blue;
+}
+
+.carousel-item .car-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #ff00ff; /* Neon background */
+  color: #000; /* Dark text */
+  text-decoration: none;
+  font-size: 1rem;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.carousel-item .car-button:hover {
+  background: #00ccff; /* Neon pink on hover */
+  box-shadow: 0 0 10px #00ccff, 0 0 20px #ff00ff; /* Glow effect */
+}
+
+/* Navigation Arrows */
+.nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+  color: #00ccff; /* Neon text */
+  border: 2px solid #00ccff; /* Neon border */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.nav-arrow:hover {
+  background: #ff00ff; /* Neon pink on hover */
+  color: #000; /* Dark text */
+  border-color: #ff00ff; /* Neon pink border */
+  box-shadow: 0 0 10px #00ccff, 0 0 20px #ff00ff; /* Glow effect */
+}
+
+.arrow-prev {
+  left: 15px;
+}
+
+.arrow-next {
+  right: 15px;
+}
+
+/* Dots Container */
+.dots-container {
+  text-align: center;
+  padding: 1.5rem 0;
+}
+
+.dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin: 0 5px;
+  background: #00ccff; /* Neon dot */
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background: #ff00ff; /* Neon pink for active dot */
+  transform: scale(1.2);
+  box-shadow: 0 0 10px #00ccff, 0 0 20px #ff00ff; /* Glow effect */
+}
+
+@media (max-width: 768px) {
+  .carousel-track {
+    display:grid;
+    gap: 0.5rem;
+  }
+
+  .carousel-item {
+    padding: 1.5rem;
+    border-radius: 8px;
+  }
+
+  .carousel-image {
+    max-width: 150px;
+  }
+
+  .carousel-item p {
+    font-size: 0.9rem;
+  }
+
+  .carousel-item .car-button {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+
+  .nav-arrow {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .search-bar {
+      flex-direction: column; /* Stack input & button */
+      gap: 8px; /* Adjust spacing */
+      align-items: center; /* Center items */
+  }
+
+  .search-input,
+  .search-button {
+      width: 90%; /* Take full width */
+      max-width: none; /* Remove max-width restriction */
+  }
+}
+
+.music-toggle {
+  position: fixed; /* Fixed position to keep it in place */
+  bottom: 20px; /* Distance from the bottom */
+  left: 20px; /* Distance from the left */
+  background-color: #333; /* Button background color */
+  color: #fff; /* Icon color */
+  border: none; /* Remove default border */
+  border-radius: 50%; /* Make it circular */
+  width: 50px; /* Button size */
+  height: 50px;
+  cursor: pointer; /* Pointer cursor on hover */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  transition: background-color 0.3s ease; /* Smooth transition */
+  z-index: 1000; /* Ensure it stays on top of other elements */
+}
+
+.music-toggle:hover {
+  background-color: #555; /* Darker background on hover */
+}
+
+.music-toggle i {
+  font-size: 24px; /* Icon size */
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.music-toggle.playing {
+  animation: pulse 1.5s infinite; /* Apply the pulse animation */
+}
