@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TeachHub</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="index/index.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    
+  </head>
+  <body>
+    <audio id="background-music" loop>
+      <source src="index/video&audio/index.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <button id="music-toggle" class="music-toggle">
+      <i class="ri-volume-up-line"></i> <!-- Icon for unmuted state -->
+    </button>
+    <header>
+      <nav>
+        <div class="logo"><a href="index.html">TeachHub</a></div>
+        <ul class="nav-links">
+          <li class="group">
+            <a href="#">Menu <i class="ri-arrow-down-s-line ml-1"></i></a>
+            <!-- Dropdown Content -->
+            <ul class="dropdown-menu">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About</a></li>
+            </ul>
+          </li>
+          <li><a href="Sign Up/signup.html" id="authLink">Sign Up</a></li>
+          <li>
+            <button
+              id="themeToggle"
+              class="theme-toggle w-10 w-10 rounded-full flex items-center justify-center cursor-pointer hover:bg-opacity-10 hover:bg-primary transition-all duration-300"
+            >
+              <i class="ri-moon-line text-xl"></i>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <h1 id="welcomeHeader"></h1>
+        <h1>Welcome To TeachHub</h1>
+        <p>Your Personalized Online Tutoring Hub</p>
+        <div class="search-bar">
+          <input type="text" placeholder="Search for..." class="search-input">
+          <button class="search-button">Search</button>
+        </div>
+        <a href="#about" class="cta-button">Explore More</a>
+      </div>
+    </section>
+
+    
+
+    
+
+    <section id="features" class="features">
+    </section>
+
+
+
+
+    <div id="cookie-popup" class="cookie-popup">
+      <p>
+        We use cookies to enhance your experience. By continuing to visit this
+        site you agree to our use of cookies.
+      </p>
+      <button id="accept-cookies" class="accept-cookies">Accept</button>
+      <button id="decline-cookies" class="decline-cookies">Decline</button>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <!-- About Us Section -->
+        <div class="aboutSection">
+          <h3>About Us</h3>
+          <p>
+            Our mission is to bring futuristic solutions to the modern
+            world. Follow us on:
+          </p>
+
+          <div class="social-icons">
+            <a href="https://instagram.com" target="_blank" class="insta">
+              <i class="ri-instagram-line text-2xl"></i>
+            </a>
+            <a href="https://facebook.com" target="_blank" class="facebook">
+              <i class="ri-facebook-box-line text-2xl"></i>
+            </a>
+            <a href="https://twitter.com" target="_blank" class="twitter">
+              <i class="ri-twitter-line text-2xl"></i>
+            </a>
+            <a href="https://youtube.com" target="_blank" class="youtube">
+              <i class="ri-youtube-line text-2xl"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Links Section -->
+        <div class="quickSection">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Us Section -->
+        <div class="contactSection">
+          <h3>Contact Us</h3>
+          <ul>
+            <li>
+              <i class="ri-map-pin-line mr-2"></i>
+              123 Jalan TakTau, Kampar
+            </li>
+            <li>
+              <i class="ri-mail-line mr-2"></i>
+              teachhub@gmail.com
+            </li>
+            <li>
+              <i class="ri-phone-line mr-2"></i>
+              +601-234-5678
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footerBottom">
+        <p>© 2025 TeachHub. All rights reserved.</p>
+        <div id="google_translate_element"></div>
+      </div>
+    </footer>
+
+    <script src="index/index.js"></script>
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+          var s1 = document.createElement("script"),
+            s0 = document.getElementsByTagName("script")[0];
+          s1.async = true;
+          s1.src = 'https://embed.tawk.to/67d5a916290a8f191781e5c9/1imd9ovut';
+          s1.charset = 'UTF-8';
+          s1.setAttribute('crossorigin', '*');
+          s0.parentNode.insertBefore(s1, s0);
+        })();
+        
+    </script>
+
+  
+  </body>
+</html>
