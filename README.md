@@ -1,4 +1,4 @@
-# ⚡ TeachHub — Your Personalized Online Tutoring Hub
+# ⚡ TeachHub — Your Personalized Online Tutoring Hub (Student Lifestyle Track - Tutoring for Students)
 
 
 TeachHub is a futuristic, gamified online tutoring platform that transforms traditional study sessions into immersive journeys.  
