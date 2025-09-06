@@ -6,6 +6,29 @@ Inspired by **codedex**, TeachHub combines **AI-powered tools**, **gamification*
 
 ---
 
+## ❌ Problem Statement
+
+Traditional tutoring services come with several challenges for students:
+
+- **Expensive 💸** — Private tutors often charge high fees.  
+- **Inconvenient ⏳** — Requires traveling to physical locations, wasting time.  
+- **Low Engagement 😴** — Often passive, with the tutor talking and the student just listening.    
+
+These problems make learning less effective and less motivating for today’s digital-native students.  
+
+---
+
+## 🚀 Our Solution
+
+TeachHub redefines tutoring as an **interactive, gamified experience**:  
+- Lessons are designed as **missions** and **levels**.  
+- Students gain **XP, levels, and badges** as they learn.  
+- Tutors act as **game masters**, guiding students with live online lessons.  
+- Built-in **AI** auto-summarizes tutor notes for fast revision.  
+- A **forum** lets students discuss and share questions (inspired by 作业帮).  
+
+---
+
 ## 🚀 Features
 
 ### 🎮 Student Interface
